@@ -4,11 +4,11 @@ import java.io.IOException;
 
 import ocr.OCR;
 
-import org.apache.commons.httpclient.HttpException;
 import org.apache.log4j.Logger;
 import org.htmlparser.util.ParserUtils;
 
 import cmobile.http.ParseCallback;
+import org.apache.http.HttpException;
 
 public class ParseFactory {
 	protected transient static final Logger log = Logger.getLogger(OCR.class);

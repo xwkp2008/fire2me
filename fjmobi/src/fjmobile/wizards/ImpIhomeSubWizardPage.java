@@ -20,7 +20,7 @@ import org.eclipse.swt.widgets.Tree;
 import org.eclipse.swt.widgets.TreeItem;
 
 import cmobile.common.OpFile;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 
 public class ImpIhomeSubWizardPage extends WizardPage {
 	private Tree tree;

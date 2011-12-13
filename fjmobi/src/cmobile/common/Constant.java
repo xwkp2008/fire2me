@@ -48,9 +48,9 @@ public class Constant {
 		return null;
 	}
 
-	public static String URL = "http://www.fj.chinamobile.com";
+	public static String URL = "http://www.fj.10086.cn";
 	
-	public static String IHOME_URL = "http://ihome.fj.chinamobile.com";
+	public static String IHOME_URL = "https://www.fj.10086.cn";
 
 	public static String KEYWORD_LOGINED = "欢迎您：(.*)手机号(.*)$";
 	public static String KEYWORD_PASSWORDERROR = "服务密码错误";
@@ -77,6 +77,8 @@ public class Constant {
 	public static String KEYWORD_IHOME_VPN = "vpn管理";
 	public static String KEYWORD_IHOME_USERINFO = "PK_FAMILY\":\"(\\d)+";
 	public static String KEYWORD_IHOME_SUCCESS = "\"success\":true";
+        
+        //public static String PARAMAS_NUMBERS="";
 	
 	public static String MOBILENO = "号码管理";
 	public static String SYSTEMCONFIG = "系统设置";
@@ -96,6 +98,7 @@ public class Constant {
 	public static String TIMEOUT=null;
 	public static boolean IS_SIMPLE=true;
 	public static boolean SYSTEM_REG=false;
+        public static boolean SYSTEM_SHUTDOWN=false;
 	public static String SYSTEM_PROC="system_proc";
 	public static String SYSTEM_TIMEOUT="system_timeout";
 

@@ -14,7 +14,7 @@ import fjmobile.model.AbstractManager;
 import fjmobile.model.ContactsManager;
 import fjmobile.model.ContactsManagerEvent;
 import fjmobile.model.ContactsManagerListener;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 import fjmobile.model.IhomeManager;
 
 /**

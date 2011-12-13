@@ -9,14 +9,14 @@ import java.util.Map;
 
 import ocr.OCR;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.log4j.Logger;
 
 import cmobile.common.Constant;
 import cmobile.common.ParseFactory;
 import cmobile.http.Callback;
 import cmobile.http.HttpCore;
+import org.apache.http.HttpException;
+import org.apache.http.client.HttpClient;
 
 /**
  * @author linq
@@ -54,7 +54,6 @@ public class IhomeLogin extends AbstractAction {
 						FileOutputStream output;
 						try {
 							output = new FileOutputStream(storeFile);
-							// 得到网络资源的字节数组,并写入文件
 							output.write((byte[]) o);
 							output.close();
 						} catch (Exception e) {

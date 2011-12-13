@@ -37,7 +37,7 @@ import cmobile.db.DBFactory;
 import fjmobile.ContactsViewContentProvider;
 import fjmobile.model.Contact;
 import fjmobile.model.ContactsManager;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 import fjmobile.model.IhomeManager;
 import fjmobile.wizards.ImpIhomeMainWizardPage;
 import fjmobile.wizards.ImpIhomeWizard;

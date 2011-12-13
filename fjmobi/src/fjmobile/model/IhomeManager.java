@@ -1,5 +1,6 @@
 package fjmobile.model;
 
+import cmobile.common.IContact;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;

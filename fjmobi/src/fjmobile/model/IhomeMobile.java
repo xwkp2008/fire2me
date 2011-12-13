@@ -1,5 +1,7 @@
 package fjmobile.model;
 
+import cmobile.common.IContact;
+
 public class IhomeMobile implements IContact {
 	private String ID;
 	private String mobileno;

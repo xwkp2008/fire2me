@@ -8,9 +8,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.Queue;
 
-import org.apache.commons.httpclient.HttpException;
 import org.apache.log4j.Logger;
-import org.eclipse.core.runtime.IProgressMonitor;
 
 import cmobile.common.Constant;
 import cmobile.common.OpFile;
@@ -19,6 +17,7 @@ import cmobile.db.DBFactory;
 import cmobile.http.HttpCore;
 import fjmobile.model.ContactsManager;
 import fjmobile.model.IhomeManager;
+import org.apache.http.HttpException;
 
 @SuppressWarnings("unchecked")
 public class ActionFactory {

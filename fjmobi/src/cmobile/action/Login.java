@@ -9,8 +9,6 @@ import java.util.Map;
 
 import ocr.OCR;
 
-import org.apache.commons.httpclient.HttpClient;
-import org.apache.commons.httpclient.HttpException;
 import org.apache.log4j.Logger;
 
 import cmobile.common.Constant;
@@ -18,6 +16,8 @@ import cmobile.common.JsDes;
 import cmobile.common.ParseFactory;
 import cmobile.http.Callback;
 import cmobile.http.HttpCore;
+import org.apache.http.HttpException;
+import org.apache.http.client.HttpClient;
 
 /**
  * @author linq
@@ -27,13 +27,11 @@ public class Login extends AbstractAction {
 
 	protected transient static final Logger log = Logger.getLogger(Login.class);
 
-	@Override
 	public String action(Map rs) throws HttpException, IOException {
 		final StringBuffer key = new StringBuffer();
 		HttpCore.getInstance().doGet(
 				Constant.URL + "/service/info/ywbl_gxtx_mmxg.jsp?tab=5",
 				new Callback() {
-					@Override
 					public void excute(HttpClient client, Object o)
 							throws UnsupportedEncodingException {
 						String html = new String((byte[]) o, "GBK");
@@ -57,7 +55,6 @@ public class Login extends AbstractAction {
 						FileOutputStream output;
 						try {
 							output = new FileOutputStream(storeFile);
-							// 得到网络资源的字节数组,并写入文件
 							output.write((byte[]) o);
 							output.close();
 						} catch (Exception e) {
@@ -109,14 +106,12 @@ public class Login extends AbstractAction {
 		HttpCore.getInstance().doPost(
 				Constant.URL + "/service/user/mobilenoLogin.do", map,
 				new Callback() {
-					@Override
 					public void excute(HttpClient client, Object o)
 							throws HttpException, IOException {
 						String validateCode = getYZM(yzmfile);
 						map.put("validateCode", validateCode);
 					}
 				}, new Callback() {// endCallback
-					@Override
 					public void excute(HttpClient client, Object o) {
 						try {
 							String html = new String((byte[]) o, "GBK");

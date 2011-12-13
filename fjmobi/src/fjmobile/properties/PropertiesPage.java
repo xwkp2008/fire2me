@@ -11,7 +11,7 @@ import org.eclipse.swt.widgets.Label;
 import org.eclipse.ui.dialogs.PropertyPage;
 
 import fjmobile.model.Contact;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 
 public class PropertiesPage extends PropertyPage
 {

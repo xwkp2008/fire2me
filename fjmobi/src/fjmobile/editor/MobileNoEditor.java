@@ -30,7 +30,7 @@ import cmobile.common.OpFile;
 import cmobile.db.DBFactory;
 import fjmobile.ContactsViewContentProvider;
 import fjmobile.model.ContactsManager;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 import fjmobile.wizards.NewContactWizard;
 
 @SuppressWarnings("unchecked")

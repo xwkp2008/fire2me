@@ -1,4 +1,4 @@
-package fjmobile.action;
+asdpackage fjmobile.action;
 
 import org.eclipse.jface.action.Action;
 import org.eclipse.jface.dialogs.MessageDialog;

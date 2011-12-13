@@ -1,5 +1,6 @@
 package fjmobile.model;
 
+import cmobile.common.IContact;
 import fjmobile.ContactsViewContentProvider;
 
 public abstract class AbstractManager {

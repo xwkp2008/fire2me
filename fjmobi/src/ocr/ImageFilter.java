@@ -24,7 +24,7 @@ public class ImageFilter {
   pixels = new int[iw * ih];
  }
 
- /** Í¼Ïñ¶şÖµ»¯ */
+ /** å›¾åƒäºŒå€¼åŒ– */
  public BufferedImage changeGrey() {
   PixelGrabber pg = new PixelGrabber(image.getSource(), 0, 0, iw, ih, pixels, 0, iw);
   try {
@@ -32,9 +32,9 @@ public class ImageFilter {
   } catch (InterruptedException e) {
    e.printStackTrace();
   }
-  // Éè¶¨¶şÖµ»¯µÄÓòÖµ£¬Ä¬ÈÏÖµÎª100
+  // è®¾å®šäºŒå€¼åŒ–çš„åŸŸå€¼ï¼Œé»˜è®¤å€¼ä¸º100
   int grey = 100;
-  // ¶ÔÍ¼Ïñ½øĞĞ¶şÖµ»¯´¦Àí£¬AlphaÖµ±£³Ö²»±ä
+  // å¯¹å›¾åƒè¿›è¡ŒäºŒå€¼åŒ–å¤„ç†ï¼ŒAlphaå€¼ä¿æŒä¸å˜
   ColorModel cm = ColorModel.getRGBdefault();
   for (int i = 0; i < iw * ih; i++) {
    int red, green, blue;
@@ -59,11 +59,11 @@ public class ImageFilter {
 
    pixels[i] = alpha << 24 | red << 16 | green << 8 | blue;
   }
-  // ½«Êı×éÖĞµÄÏóËØ²úÉúÒ»¸öÍ¼Ïñ
+  // å°†æ•°ç»„ä¸­çš„è±¡ç´ äº§ç”Ÿä¸€ä¸ªå›¾åƒ
   return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
  }
 
- /** ÌáÉıÇåÎú¶È,½øĞĞÈñ»¯ */
+ /** æå‡æ¸…æ™°åº¦,è¿›è¡Œé”åŒ– */
  public BufferedImage sharp() {
   PixelGrabber pg = new PixelGrabber(image.getSource(), 0, 0, iw, ih, pixels, 0, iw);
   try {
@@ -72,18 +72,18 @@ public class ImageFilter {
    e.printStackTrace();
   }
 
-  // ÏóËØµÄÖĞ¼ä±äÁ¿
+  // è±¡ç´ çš„ä¸­é—´å˜é‡
   int tempPixels[] = new int[iw * ih];
   for (int i = 0; i < iw * ih; i++) {
    tempPixels[i] = pixels[i];
   }
-  // ¶ÔÍ¼Ïñ½øĞĞ¼âÈñ»¯´¦Àí£¬AlphaÖµ±£³Ö²»±ä
+  // å¯¹å›¾åƒè¿›è¡Œå°–é”åŒ–å¤„ç†ï¼ŒAlphaå€¼ä¿æŒä¸å˜
   ColorModel cm = ColorModel.getRGBdefault();
   for (int i = 1; i < ih - 1; i++) {
    for (int j = 1; j < iw - 1; j++) {
     int alpha = cm.getAlpha(pixels[i * iw + j]);
 
-    // ¶ÔÍ¼Ïñ½øĞĞ¼âÈñ»¯
+    // å¯¹å›¾åƒè¿›è¡Œå°–é”åŒ–
     int red6 = cm.getRed(pixels[i * iw + j + 1]);
     int red5 = cm.getRed(pixels[i * iw + j]);
     int red8 = cm.getRed(pixels[(i + 1) * iw + j]);
@@ -113,11 +113,11 @@ public class ImageFilter {
    }
   }
 
-  // ½«Êı×éÖĞµÄÏóËØ²úÉúÒ»¸öÍ¼Ïñ
+  // å°†æ•°ç»„ä¸­çš„è±¡ç´ äº§ç”Ÿä¸€ä¸ªå›¾åƒ
   return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, tempPixels, 0, iw));
  }
 
- /** ÖĞÖµÂË²¨ */
+ /** ä¸­å€¼æ»¤æ³¢ */
  public BufferedImage median() {
   PixelGrabber pg = new PixelGrabber(image.getSource(), 0, 0, iw, ih, pixels, 0, iw);
   try {
@@ -125,7 +125,7 @@ public class ImageFilter {
   } catch (InterruptedException e) {
    e.printStackTrace();
   }
-  // ¶ÔÍ¼Ïñ½øĞĞÖĞÖµÂË²¨£¬AlphaÖµ±£³Ö²»±ä
+  // å¯¹å›¾åƒè¿›è¡Œä¸­å€¼æ»¤æ³¢ï¼ŒAlphaå€¼ä¿æŒä¸å˜
   ColorModel cm = ColorModel.getRGBdefault();
   for (int i = 1; i < ih - 1; i++) {
    for (int j = 1; j < iw - 1; j++) {
@@ -138,7 +138,7 @@ public class ImageFilter {
     int red6 = cm.getRed(pixels[i * iw + j + 1]);
     // int red8 = cm.getRed(pixels[(i + 1) * iw + j]);
 
-    // Ë®Æ½·½Ïò½øĞĞÖĞÖµÂË²¨
+    // æ°´å¹³æ–¹å‘è¿›è¡Œä¸­å€¼æ»¤æ³¢
     if (red4 >= red5) {
      if (red5 >= red6) {
       red = red5;
@@ -167,7 +167,7 @@ public class ImageFilter {
     int green6 = cm.getGreen(pixels[i * iw + j + 1]);
     // int green8 = cm.getGreen(pixels[(i + 1) * iw + j]);
 
-    // Ë®Æ½·½Ïò½øĞĞÖĞÖµÂË²¨
+    // æ°´å¹³æ–¹å‘è¿›è¡Œä¸­å€¼æ»¤æ³¢
     if (green4 >= green5) {
      if (green5 >= green6) {
       green = green5;
@@ -196,7 +196,7 @@ public class ImageFilter {
     int blue6 = cm.getBlue(pixels[i * iw + j + 1]);
     // int blue8 = cm.getBlue(pixels[(i + 1) * iw + j]);
 
-    // Ë®Æ½·½Ïò½øĞĞÖĞÖµÂË²¨
+    // æ°´å¹³æ–¹å‘è¿›è¡Œä¸­å€¼æ»¤æ³¢
     if (blue4 >= blue5) {
      if (blue5 >= blue6) {
       blue = blue5;
@@ -222,11 +222,11 @@ public class ImageFilter {
    }
   }
 
-  // ½«Êı×éÖĞµÄÏóËØ²úÉúÒ»¸öÍ¼Ïñ
+  // å°†æ•°ç»„ä¸­çš„è±¡ç´ äº§ç”Ÿä¸€ä¸ªå›¾åƒ
   return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
  }
 
- /** ÏßĞÔ»Ò¶È±ä»» */
+ /** çº¿æ€§ç°åº¦å˜æ¢ */
  public BufferedImage lineGrey() {
   PixelGrabber pg = new PixelGrabber(image.getSource(), 0, 0, iw, ih, pixels, 0, iw);
   try {
@@ -234,7 +234,7 @@ public class ImageFilter {
   } catch (InterruptedException e) {
    e.printStackTrace();
   }
-  // ¶ÔÍ¼Ïñ½øĞĞ½øĞĞÏßĞÔÀ­Éì£¬AlphaÖµ±£³Ö²»±ä
+  // å¯¹å›¾åƒè¿›è¡Œè¿›è¡Œçº¿æ€§æ‹‰ä¼¸ï¼ŒAlphaå€¼ä¿æŒä¸å˜
   ColorModel cm = ColorModel.getRGBdefault();
   for (int i = 0; i < iw * ih; i++) {
    int alpha = cm.getAlpha(pixels[i]);
@@ -242,7 +242,7 @@ public class ImageFilter {
    int green = cm.getGreen(pixels[i]);
    int blue = cm.getBlue(pixels[i]);
 
-   // Ôö¼ÓÁËÍ¼ÏñµÄÁÁ¶È
+   // å¢åŠ äº†å›¾åƒçš„äº®åº¦
    red = (int) (1.1 * red + 30);
    green = (int) (1.1 * green + 30);
    blue = (int) (1.1 * blue + 30);
@@ -258,19 +258,19 @@ public class ImageFilter {
    pixels[i] = alpha << 24 | red << 16 | green << 8 | blue;
   }
 
-  // ½«Êı×éÖĞµÄÏóËØ²úÉúÒ»¸öÍ¼Ïñ
+  // å°†æ•°ç»„ä¸­çš„è±¡ç´ äº§ç”Ÿä¸€ä¸ªå›¾åƒ
 
   return ImageIOHelper.imageProducerToBufferedImage(new MemoryImageSource(iw, ih, pixels, 0, iw));
  }
 
- /** ×ª»»ÎªºÚ°×»Ò¶ÈÍ¼ */
+ /** è½¬æ¢ä¸ºé»‘ç™½ç°åº¦å›¾ */
  public BufferedImage grayFilter() {
   ColorSpace cs = ColorSpace.getInstance(ColorSpace.CS_GRAY);
   ColorConvertOp op = new ColorConvertOp(cs, null);
   return op.filter(image, null);
  }
 
- /** Æ½»¬Ëõ·Å */
+ /** å¹³æ»‘ç¼©æ”¾ */
  public BufferedImage scaling(double s) {
   AffineTransform tx = new AffineTransform();
   tx.scale(s, s);
@@ -283,21 +283,21 @@ public class ImageFilter {
   int srcH = image.getHeight();
   int newW = Math.round((s.floatValue()*srcW));
   int newH = Math.round((s.floatValue()*srcH));
-  // ÏÈ×öË®Æ½·½ÏòÉÏµÄÉìËõ±ä»»
+  // å…ˆåšæ°´å¹³æ–¹å‘ä¸Šçš„ä¼¸ç¼©å˜æ¢
   BufferedImage tmp=new BufferedImage(newW, newH, image.getType()); 
   Graphics2D g= tmp.createGraphics(); 
   for (int x = 0; x < newW; x++) {
    g.setClip(x, 0, 1, srcH);
-   // °´±ÈÀı·ÅËõ
+   // æŒ‰æ¯”ä¾‹æ”¾ç¼©
    g.drawImage(image, x - x * srcW / newW, 0, null);
   }
 
-  // ÔÙ×ö´¹Ö±·½ÏòÉÏµÄÉìËõ±ä»»
+  // å†åšå‚ç›´æ–¹å‘ä¸Šçš„ä¼¸ç¼©å˜æ¢
   BufferedImage dst = new BufferedImage(newW, newH, image.getType()); 
   g = dst.createGraphics();
   for (int y = 0; y < newH; y++) {
    g.setClip(0, y, newW, 1);
-   // °´±ÈÀı·ÅËõ
+   // æŒ‰æ¯”ä¾‹æ”¾ç¼©
    g.drawImage(tmp, 0, y - y * srcH / newH, null);
   }
   return dst;

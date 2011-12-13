@@ -48,7 +48,7 @@ import cmobile.db.DBFactory;
 import fjmobile.ContactsViewContentProvider;
 import fjmobile.editor.job.RefreshStatusJob;
 import fjmobile.model.ContactsManager;
-import fjmobile.model.IContact;
+import cmobile.common.IContact;
 
 public class Duanxin extends EditorPart {
 

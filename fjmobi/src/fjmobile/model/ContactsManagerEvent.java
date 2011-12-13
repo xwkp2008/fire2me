@@ -1,5 +1,6 @@
 package fjmobile.model;
 
+import cmobile.common.IContact;
 import java.util.EventObject;
 
 import org.eclipse.core.resources.IResourceChangeListener;
